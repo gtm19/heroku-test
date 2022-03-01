@@ -15,12 +15,16 @@ heroku create --buildpack https://github.com/virtualstaticvoid/heroku-buildpack-
 ```
 git push heroku main
 ```
+* Install Heroku Scheduler:
+```
+heroku addons:create scheduler:standard
+```
+* Open scheduler and add `Rscript update.R`:
+```
+heroku addons:open scheduler
+```
 
 ## Project Overview
-
-### `db` folder
-
-Containing the "database" (really just a text file)
 
 ### `R` folder
 Contains a `functions.R` script which includes a function which just adds a timestamp to a given file. In real life, this function might call an API and/or write to a database.
@@ -31,4 +35,4 @@ Actually not currently used, but the [buildpack](https://elements.heroku.com/bui
 
 ### update.R
 
-A script which runs the `add_time()` function (which adds a timestamp to our "database")
+A script which runs the `add_time()` function (which adds a timestamp to our "database" - or at least it would if our file was actually a database or Heroku was [not ephemeral](https://help.heroku.com/K1PPS2WM/why-are-my-file-uploads-missing-deleted))
