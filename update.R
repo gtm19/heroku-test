@@ -1,3 +1,3 @@
-# source("R/functions.R")
+source("R/functions.R")
 
 add_time()
